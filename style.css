@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+header {
+    background-color: #333;
+    color:#f0f0f0
+}
+#counter-btn {
+    height: 200px;
+    width: 300px;
+    border-radius: 15px;
+    border-color: red;
+}
+#send-ai {
+    height: 100px;  
+    width: 200px;
+    border-radius: 15px;
+}
