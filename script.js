@@ -1,4 +1,5 @@
 let count = 0;
+let counter = document.getElementById('counter');
 let btnclicker = document.getElementById('counter-btn');
 btnclicker.addEventListener('click', () => {
     count += 1;
@@ -15,9 +16,13 @@ buttonAI.addEventListener('click', async () => {
         aiResponse.textContent = 'Введи текст сучк';
         return;
     }
+
+    aiResponse.textContent = 'Загрузка...';
+    aiResponse.classList.add('loading');      // подсвечиваем рамку пока ждём
+
     try {
         const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API}`,
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${API_KEY}`,
             {
                 method: 'POST',
                 headers: {
@@ -44,5 +49,7 @@ buttonAI.addEventListener('click', async () => {
 
     } catch (error) {
         aiResponse.textContent = 'Ошибка: ' + error.message;
+    } finally {
+        aiResponse.classList.remove('loading');   // убираем подсветку в любом случае
     }
 });
