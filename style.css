@@ -27,7 +27,14 @@ body {
     display: flex;
     flex-direction: column;
 }
-
+body.light {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #ebebeb;
+    --border: #ddd;
+    --text: #111;
+    --muted: #999;
+}
 /* ── Header ── */
 header {
     padding: 28px 40px;
@@ -59,7 +66,102 @@ header h1 {
 header h1 span {
     color: var(--accent);
 }
+.theme-toggle {
+    margin-left: auto; 
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
 
+.theme-toggle:hover {
+    border-color: var(--accent);
+    transform: rotate(20deg);
+}
+/* ── Burger ── */
+.burger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px;
+}
+
+.burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Анимация в крестик когда открыто */
+.burger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.burger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.burger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Nav menu ── */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: -260px; 
+    width: 260px;
+    height: 100vh;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 40px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: left 0.3s ease;
+    z-index: 100;
+}
+
+.nav-menu.open {
+    left: 0;             /* выезжает */
+}
+
+.nav-menu a {
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+    color: var(--accent);
+}
+
+/* Затемнение фона когда меню открыто */
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+}
+
+.overlay.open {
+    display: block;
+}
 /* ── Main layout ── */
 main {
     flex: 1;

@@ -1,9 +1,44 @@
+const themeToggle = document.getElementById('theme-toggle');
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+
+    if (document.body.classList.contains('light')) {
+        themeToggle.textContent = 'WHILE';
+    } else {
+        themeToggle.textContent = 'BLACK';
+    }
+});
+
 let count = 0;
 let counter = document.getElementById('counter');
 let btnclicker = document.getElementById('counter-btn');
 btnclicker.addEventListener('click', () => {
     count += 1;
     counter.textContent = 'Кликов: ' + count;
+});
+let input = document.querySelector('.input-field input');
+
+input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        buttonAI.click();
+    }
+});
+
+const burger = document.getElementById('burger');
+const navMenu = document.getElementById('nav-menu');
+const overlay = document.getElementById('overlay');
+
+burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navMenu.classList.toggle('open');
+    overlay.classList.toggle('open');
+});
+
+overlay.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navMenu.classList.remove('open');
+    overlay.classList.remove('open');
 });
 
 let buttonAI = document.getElementById('send-ai');

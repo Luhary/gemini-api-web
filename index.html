@@ -8,8 +8,20 @@
 </head>
 <body>
     <header>
+        <button class="burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <h1>Test<span>ing</span></h1>
+        <button class="theme-toggle" id="theme-toggle">BLACK</button>
     </header>
+    
+    <nav class="nav-menu" id="nav-menu">
+        <a href="#">Главная</a>
+        <a href="#">О проекте</a>
+        <a href="#">Настройки</a>
+    </nav>
     <main>
         <div class="input-field">
             <input type="text" placeholder="Вставьте ваш запрос в нейронку...">
@@ -19,6 +31,7 @@
         <p id="counter">Кликов: 0</p>
         <p id="ai-response">Ответ нейронки появится здесь...</p>
     </main>
+    <div class="overlay" id="overlay"></div>
     <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
