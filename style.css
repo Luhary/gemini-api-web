@@ -317,7 +317,7 @@ main {
 
 @keyframes blink {
     0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
+    50% { opacity: 0; }
 }
 
 /* ── Settings card ── */
@@ -460,7 +460,7 @@ main {
 }
 
 .save-status.success { color: var(--accent); }
-.save-status.error   { color: var(--accent2); }
+.save-status.error { color: var(--accent2); }
 
 /* ── About page ── */
 .about-text {

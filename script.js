@@ -56,24 +56,24 @@ navLinks.forEach(link => {
 const MODELS = {
     gemini: [
         { value: 'gemini-2.5-flash-lite', label: 'Gemini 2.5 Flash Lite' },
-        { value: 'gemini-2.5-flash',      label: 'Gemini 2.5 Flash' },
-        { value: 'gemini-2.5-pro',        label: 'Gemini 2.5 Pro' },
+        { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash' },
+        { value: 'gemini-2.5-pro', label: 'Gemini 2.5 Pro' },
     ],
     openai: [
         { value: 'gpt-4o-mini', label: 'GPT-4o Mini' },
-        { value: 'gpt-4o',      label: 'GPT-4o' },
+        { value: 'gpt-4o', label: 'GPT-4o' },
         { value: 'gpt-4-turbo', label: 'GPT-4 Turbo' },
-        { value: 'o3-mini',     label: 'o3-mini' },
+        { value: 'o3-mini', label: 'o3-mini' },
     ],
     anthropic: [
-        { value: 'claude-haiku-4-5-20251001',  label: 'Claude Haiku 4.5' },
-        { value: 'claude-sonnet-4-6',           label: 'Claude Sonnet 4.6' },
-        { value: 'claude-opus-4-6',             label: 'Claude Opus 4.6' },
+        { value: 'claude-haiku-4-5-20251001', label: 'Claude Haiku 4.5' },
+        { value: 'claude-sonnet-4-6', label: 'Claude Sonnet 4.6' },
+        { value: 'claude-opus-4-6', label: 'Claude Opus 4.6' },
     ],
 };
 
 const providerSelect = document.getElementById('ai-provider-select');
-const modelSelect    = document.getElementById('ai-model-select');
+const modelSelect = document.getElementById('ai-model-select');
 
 function populateModels(provider) {
     modelSelect.innerHTML = '';
@@ -94,9 +94,9 @@ providerSelect.addEventListener('change', () => {
 
 // ── Загрузка настроек из localStorage ──
 function loadSettings() {
-    const key      = localStorage.getItem('ai_api_key')  || '';
+    const key = localStorage.getItem('ai_api_key') || '';
     const provider = localStorage.getItem('ai_provider') || 'gemini';
-    const model    = localStorage.getItem('ai_model_' + provider) || '';
+    const model = localStorage.getItem('ai_model_' + provider) || '';
 
     document.getElementById('api-key-input').value = key;
     providerSelect.value = provider;
@@ -107,7 +107,7 @@ loadSettings();
 
 // ── Показать/скрыть ключ ──
 const toggleKeyBtn = document.getElementById('toggle-key-visibility');
-const apiKeyInput  = document.getElementById('api-key-input');
+const apiKeyInput = document.getElementById('api-key-input');
 toggleKeyBtn.addEventListener('click', () => {
     apiKeyInput.type = apiKeyInput.type === 'password' ? 'text' : 'password';
 });
@@ -115,9 +115,9 @@ toggleKeyBtn.addEventListener('click', () => {
 // ── Сохранение настроек ──
 const saveStatus = document.getElementById('save-status');
 document.getElementById('save-settings').addEventListener('click', () => {
-    const key      = apiKeyInput.value.trim();
+    const key = apiKeyInput.value.trim();
     const provider = providerSelect.value;
-    const model    = modelSelect.value;
+    const model = modelSelect.value;
 
     if (!key) {
         saveStatus.textContent = '⚠ Введи API ключ';
@@ -136,9 +136,9 @@ document.getElementById('save-settings').addEventListener('click', () => {
 
 // ── Вызов API по провайдеру ──
 async function callAI(userText) {
-    const key      = localStorage.getItem('ai_api_key');
+    const key = localStorage.getItem('ai_api_key');
     const provider = localStorage.getItem('ai_provider') || 'gemini';
-    const model    = localStorage.getItem('ai_model_' + provider) || MODELS[provider][0].value;
+    const model = localStorage.getItem('ai_model_' + provider) || MODELS[provider][0].value;
 
     if (!key) throw new Error('API ключ не задан. Зайди в Настройки и вставь ключ.');
 
@@ -197,7 +197,7 @@ async function callAI(userText) {
 }
 
 // ── Кнопка отправки ──
-const buttonAI   = document.getElementById('send-ai');
+const buttonAI = document.getElementById('send-ai');
 const aiResponse = document.getElementById('ai-response');
 
 buttonAI.addEventListener('click', async () => {
