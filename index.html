@@ -18,21 +18,76 @@
     </header>
     
     <nav class="nav-menu" id="nav-menu">
-        <a href="#">Главная</a>
-        <a href="#">О проекте</a>
-        <a href="#">Настройки</a>
+        <a href="#" data-page="home">Главная</a>
+        <a href="#" data-page="about">О проекте</a>
+        <a href="#" data-page="settings">Настройки</a>
     </nav>
+
     <main>
-        <div class="input-field">
-            <input type="text" placeholder="Вставьте ваш запрос в нейронку...">
-            <button id="counter-btn">просто кликер</button>
-            <button id="send-ai">Отправить →</button>
+        <!-- Главная страница -->
+        <div id="page-home" class="page active">
+            <div class="input-field">
+                <input type="text" placeholder="Вставьте ваш запрос в нейронку...">
+                <button id="counter-btn">просто кликер</button>
+                <button id="send-ai">Отправить →</button>
+            </div>
+            <p id="counter">Кликов: 0</p>
+            <p id="ai-response">Ответ нейронки появится здесь...</p>
         </div>
-        <p id="counter">Кликов: 0</p>
-        <p id="ai-response">Ответ нейронки появится здесь...</p>
+
+        <!-- Страница настроек -->
+        <div id="page-settings" class="page">
+            <div class="settings-card">
+                <div class="settings-header">
+                    <span class="settings-tag">config</span>
+                    <h2>Настройки</h2>
+                </div>
+
+                <div class="settings-group">
+                    <label for="api-key-input">API Ключ</label>
+                    <div class="api-key-wrapper">
+                        <input type="password" id="api-key-input" placeholder="Вставьте ваш API ключ...">
+                        <button id="toggle-key-visibility" class="icon-btn" title="Показать/скрыть ключ">👁</button>
+                    </div>
+                    <span class="hint">Ключ хранится только в браузере (localStorage)</span>
+                </div>
+
+                <div class="settings-group">
+                    <label for="ai-provider-select">Провайдер</label>
+                    <select id="ai-provider-select">
+                        <option value="gemini">Google Gemini</option>
+                        <option value="openai">OpenAI</option>
+                        <option value="anthropic">Anthropic Claude</option>
+                    </select>
+                </div>
+
+                <div class="settings-group">
+                    <label for="ai-model-select">Модель</label>
+                    <select id="ai-model-select">
+                        <!-- заполняется динамически -->
+                    </select>
+                </div>
+
+                <div class="settings-actions">
+                    <button id="save-settings">Сохранить</button>
+                    <span id="save-status" class="save-status"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- О проекте -->
+        <div id="page-about" class="page">
+            <div class="settings-card">
+                <div class="settings-header">
+                    <span class="settings-tag">readme</span>
+                    <h2>О проекте</h2>
+                </div>
+                <p class="about-text">Простой интерфейс для общения с нейросетями. Введи API ключ в настройках, выбери провайдера и модель — и можно общаться.</p>
+            </div>
+        </div>
     </main>
+
     <div class="overlay" id="overlay"></div>
-    <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
